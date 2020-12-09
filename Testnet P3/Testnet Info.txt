@@ -1,0 +1,17 @@
+Testnet
+
+Buffer (This is the wallet we use to log into our network)
+
+Address: 0x2C86A791045Ba11645bad414fFdb19d8f5f56e53
+Private key: 72419fbf24dad489648f7abc3713c2f1f481d8851195625e011d7eb56bc79110
+
+Signer
+
+Address: 0x854927f7Dd9A8b5A3f6B24862D78479Ecf39a09b
+Private key: 15a64ae88143b88d844ead5a9dec1788fa2bcf84176879030c1209ec887ccab3
+
+My Crypto Wallet Custom Network Info
+
+URL: http://localhost:8178/
+Chain ID: 5555
+Currency: ETH

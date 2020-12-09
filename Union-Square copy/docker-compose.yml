@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  geth:
+    image: ulamlabs/geth-poa-testnet:latest
+    environment:
+      - ETH_PASSWORD=abcdefghijkl
+      - ETH_PRIVATE_KEY=53ee5a94d2a49497d5e9961a0db8a3590761352af6f6dbc9d597e727ac107011
+      - ETH_ADDRESS=0xd31E2848EB1f365D9f5f9d1D1a63736966369D0a
+    ports:
+      - '0.0.0.0:8178:8178'
+      - 8546:8546
+    volumes:
+      - ./genesis.json:/app/genesis.json
+
+  blockscout:
+    image: ulamlabs/blockscout:latest
+    links:
+      - geth
+      - postgres
+    ports:
+      - 4000:4000
+    environment:
+      - DATABASE_URL=postgresql://postgres:@postgres:5432/postgres?ssl=false
+      - ETHEREUM_JSONRPC_VARIANT=geth
+      - ETHEREUM_JSONRPC_HTTP_URL=http://geth:8178
+      - ETHEREUM_JSONRPC_WS_URL=ws://geth:8546
+      - MIX_ENV=prod
+      - BLOCKSCOUT_HOST=localhost
+      - COIN=eth
+      - NETWORK=POA
+      - SUBNETWORK=Local Testnet
+
+  postgres:
+    image: postgres:12
+    command: postgres -c 'max_connections=500'
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
