@@ -19,3 +19,4 @@
 
 ![alt text](https://github.com/scherry2/Custom-Ethereum-Testnet/blob/main/images/ICO.jpg)
 
+Over the next few days, we do plan on figuring out this issue with MetaMask so we can reach finality!
